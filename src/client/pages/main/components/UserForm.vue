@@ -1,4 +1,4 @@
-    <template>
+<template>
   <form @submit.prevent>
     <h2 class="addUserTitle">Добавление пользователя</h2>
     <my-input
@@ -25,11 +25,9 @@
 </template>
 
 <script>
-import MyButton from "./UI/MyButton.vue";
-import MyInput from "./UI/MyInput.vue";
+
 
 export default {
-  components: {MyInput, MyButton},
   data() {
     return {
       user: {
@@ -66,7 +64,6 @@ form {
   align-items: flex-start;
   width: 550px;
 }
-
 
 
 /*button*/

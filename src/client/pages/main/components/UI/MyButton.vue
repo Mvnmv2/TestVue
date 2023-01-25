@@ -6,6 +6,7 @@
 
 <script>
 export default {
+  name: 'my-button',
   methods : {
     click(){
       this.$emit('click')

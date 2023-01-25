@@ -8,6 +8,7 @@
 
 <script>
 export default {
+  name: 'my-input',
   props: {
     value: [String, Number]
   },
