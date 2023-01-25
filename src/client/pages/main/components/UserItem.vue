@@ -14,14 +14,17 @@
         </div>
       </div>
       <div class="user__btn">
-        <button>Удалить</button>
+        <my-button>Удалить</my-button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import MyButton from "./UI/MyButton.vue";
+
 export default {
+  components: {MyButton},
   props: {
     user: {
       type: Object,

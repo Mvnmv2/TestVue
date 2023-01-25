@@ -1,34 +1,35 @@
-<template>
+    <template>
   <form @submit.prevent>
     <h2 class="addUserTitle">Добавление пользователя</h2>
-    <input
+    <my-input
         v-model="user.surname"
-        class="input"
         type="text"
-        placeholder="Введите фамилию">
-    <input
+        placeholder="Введите фамилию"/>
+    <my-input
         v-model="user.name"
-        class="input"
-        type="text" placeholder="Введите имя">
-    <input
-        v-model="user.patronymic"
-        class="input"
         type="text"
-        placeholder="Введите отчество">
-    <input
+        placeholder="Введите имя"/>
+    <my-input
+        v-model="user.patronymic"
+        type="text"
+        placeholder="Введите отчество"/>
+    <my-input
         v-model="user.email"
-        class="input"
         type="email"
-        placeholder="Введите Email">
+        placeholder="Введите Email"/>
 
-    <button class="btnAdd" @click="addUser">
+    <my-button @click="addUser">
       Добавить пользователя
-    </button>
+    </my-button>
   </form>
 </template>
 
 <script>
+import MyButton from "./UI/MyButton.vue";
+import MyInput from "./UI/MyInput.vue";
+
 export default {
+  components: {MyInput, MyButton},
   data() {
     return {
       user: {
@@ -66,34 +67,8 @@ form {
   width: 550px;
 }
 
-.input {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  outline: none;
-  border: 1px solid #cbc7c7;
-}
 
-.input:hover {
-  outline: 1px solid rgba(203, 199, 199, 0.99);
-}
 
 /*button*/
-.btnAdd {
-  font-size: 18px;
-  padding: 10px 15px;
-  border: 1px solid #cbc7c7;
-  background-color: #d7bcbc;
-  border-radius: 20px;
-  margin: 15px auto 0;
-  transition: all .2s;
-}
 
-.btnAdd:hover {
-  background-color: rosybrown;
-}
-
-.btnAdd:active {
-  background-color: #e79696;
-}
 </style>
