@@ -1,20 +1,36 @@
 <template>
   <div class="app">
-    <user-form
-        @create="addUser"/>
+    <h1>Список пользователей</h1>
+    <my-button @click="showDialog">Добавить пользователя</my-button>
+
+    <my-dialog :show="dialogVisible"
+               @update="dialogHide"
+    >
+      <user-form
+          @create="addUser"/>
+    </my-dialog>
     <user-list
         :users="users"
+        @remove="removeUser"
+        @updateUser="updateUser"
+
+        :dialogUpdateVisible="dialogUpdateVisible"
+
     />
+
+
   </div>
 </template>
 
 <script>
 import UserForm from "./components/UserForm.vue";
 import UserList from "./components/UserList.vue";
+import MyDialog from "./components/MyDialog.vue";
+
 
 export default {
   components: {
-    UserList, UserForm
+    MyDialog, UserList, UserForm
   },
   data() {
     return {
@@ -47,12 +63,41 @@ export default {
           countOfFriends: 7
         },
       ],
+      dialogVisible: false,
+      dialogUpdateVisible: false,
+
     }
   },
   methods: {
     addUser(user) {
       this.users.push(user);
+      this.dialogVisible = false;
+    },
+    removeUser(user) {
+      this.users = this.users.filter(u => u.id !== user.id)
+    },
+    updateUser(user) {
+
+      console.log(user)
+      // this.users.map(u => {
+      //   if (u.id === usr.id) {
+      //     console.log(usr.surname)
+      //     console.log(u.surname)
+      //   }
+      // })
+
+      // console.log('Как же тебя обновить? ' + user.id)
+      // this.dialogUpdateVisible = false;
+    },
+
+    showDialog() {
+      this.dialogVisible = true;
+
+    },
+    dialogHide() {
+      this.dialogVisible = false;
     }
+
   }
 }
 

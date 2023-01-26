@@ -14,23 +14,53 @@
         </div>
       </div>
       <div class="user__btn">
-        <my-button>Удалить</my-button>
+        <my-button @click="$emit('remove', user)">Удалить</my-button>
+
+        <my-button @click="showDialogUpdate">Редактировать</my-button>
+
+        <my-dialog :show="dialogUpdateVisible"
+                   @update="dialogUpdateHide"
+        >
+          <user-update-form
+              @updateUser="$emit('updateUser', user)"/>
+        </my-dialog>
       </div>
     </div>
+
   </div>
 </template>
 
 <script>
+import UserUpdateForm from "./UserUpdateForm.vue";
 import MyButton from "./UI/MyButton.vue";
 
 export default {
-  components: {MyButton},
+  components: {MyButton, UserUpdateForm},
   props: {
     user: {
       type: Object,
       required: true
+    },
+    dialogUpdateVisible: {
+      type: Boolean,
+      default: false
     }
+  },
+
+  data() {
+    return {}
+  },
+
+  methods: {
+    dialogUpdateHide() {
+      this.dialogUpdateVisible = false;
+    },
+    showDialogUpdate() {
+      this.dialogUpdateVisible = true;
+
+    },
   }
+
 }
 </script>
 
@@ -43,7 +73,7 @@ export default {
   border: 2px solid rosybrown;
   margin-top: 15px;
   font-size: 20px;
-  width: 550px;
+  width: 750px;
   border-radius: 30px;
 }
 

@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent>
-    <h2 class="addUserTitle">Добавление пользователя</h2>
+    <h2 class="addUserTitle">Редактирование пользователя</h2>
     <my-input
         v-model="user.surname"
         type="text"
@@ -18,8 +18,8 @@
         type="email"
         placeholder="Введите Email"/>
 
-    <my-button @click="addUser">
-      Добавить пользователя
+    <my-button @click="updateUser">
+      Редактировать пользователя
     </my-button>
   </form>
 </template>
@@ -41,17 +41,18 @@ export default {
     }
   },
   methods: {
-    addUser() {
-      this.user.id = Date.now();
-      this.$emit('create', this.user);
-      this.user = {
-        surname: '',
-        name: '',
-        patronymic: '',
-        email: '',
+    updateUser() {
+        this.user.id = Date.now();
+        this.$emit('updateUser', this.user);
+        this.user = {
+          surname: '',
+          name: '',
+          patronymic: '',
+          email: '',
       }
+    },
 
-    }
+
   }
 }
 </script>

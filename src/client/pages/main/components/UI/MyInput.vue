@@ -15,7 +15,6 @@ export default {
   methods: {
     updateInput(event) {
       this.$emit('input', event.target.value)
-
     }
   }
 }
