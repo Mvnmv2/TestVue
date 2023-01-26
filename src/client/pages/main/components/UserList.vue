@@ -7,9 +7,10 @@
           :user="user"
           :key="user.id"
           @remove="$emit('remove', user)"
-          @updateUser="$emit('updateUser', user)"
+          @updateUser="$emit('updateUser', $event)"
 
           :dialogUpdateVisible="dialogUpdateVisible"
+          :id="user.id"
 
       />
     </div>
@@ -32,7 +33,11 @@ export default {
     dialogUpdateVisible: {
       type: Boolean,
       default: false
-    }
+    },
+    // id: {
+    //   type: Number,
+    //   required: true
+    // }
   },
 
 }

@@ -27,10 +27,12 @@
 <script>
 
 export default {
+  props: ['id'],
+
   data() {
     return {
       user: {
-        id: '',
+        id: this.id,
         img: '',
         surname: '',
         name: '',
@@ -42,14 +44,15 @@ export default {
   },
   methods: {
     updateUser() {
-        this.user.id = Date.now();
-        this.$emit('updateUser', this.user);
-        this.user = {
-          surname: '',
-          name: '',
-          patronymic: '',
-          email: '',
+      //this.user.id = Date.now();
+      this.$emit('updateUser', this.user);
+      this.user = {
+        surname: '',
+        name: '',
+        patronymic: '',
+        email: '',
       }
+
     },
 
 

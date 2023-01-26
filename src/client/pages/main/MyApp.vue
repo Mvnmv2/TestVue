@@ -76,18 +76,19 @@ export default {
     removeUser(user) {
       this.users = this.users.filter(u => u.id !== user.id)
     },
-    updateUser(user) {
+    updateUser: function (user) {
 
-      console.log(user)
-      // this.users.map(u => {
-      //   if (u.id === usr.id) {
-      //     console.log(usr.surname)
-      //     console.log(u.surname)
-      //   }
-      // })
+      this.users.map(u => {
+        if (u.id === user.id) {
+           user.surname === '' ? '' : u.surname = user.surname;
+           user.name === '' ? '' : u.name = user.name;
+           user.patronymic === '' ? '' : u.patronymic = user.patronymic;
+           user.email === '' ? '' : u.email = user.email;
+        }
+      })
 
-      // console.log('Как же тебя обновить? ' + user.id)
-      // this.dialogUpdateVisible = false;
+
+      //this.dialogUpdateVisible = false;
     },
 
     showDialog() {

@@ -22,7 +22,8 @@
                    @update="dialogUpdateHide"
         >
           <user-update-form
-              @updateUser="$emit('updateUser', user)"/>
+              :id="id"
+              @updateUser="$emit('updateUser', $event)"/>
         </my-dialog>
       </div>
     </div>
@@ -44,6 +45,10 @@ export default {
     dialogUpdateVisible: {
       type: Boolean,
       default: false
+    },
+    id: {
+      type: Number,
+      required: true
     }
   },
 
