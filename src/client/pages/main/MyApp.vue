@@ -4,21 +4,18 @@
     <my-button @click="showDialog">Добавить пользователя</my-button>
 
     <my-dialog :show="dialogVisible"
-               @update="dialogHide"
+               @update="showDialog"
     >
       <user-form
           @create="addUser"/>
     </my-dialog>
     <user-list
         :users="users"
+        :dialogUpdateVisible="dialogUpdateVisible"
         @remove="removeUser"
         @updateUser="updateUser"
-
-        :dialogUpdateVisible="dialogUpdateVisible"
-
+        @updateDialog="showUpdateDialog"
     />
-
-
   </div>
 </template>
 
@@ -77,26 +74,29 @@ export default {
       this.users = this.users.filter(u => u.id !== user.id)
     },
     updateUser: function (user) {
+      console.log(user.id)
 
-      this.users.map(u => {
+     this.users.map(u => {
         if (u.id === user.id) {
-           user.surname === '' ? '' : u.surname = user.surname;
-           user.name === '' ? '' : u.name = user.name;
-           user.patronymic === '' ? '' : u.patronymic = user.patronymic;
-           user.email === '' ? '' : u.email = user.email;
+          user.surname !== '' ? u.surname = user.surname : '';
+          user.name !== '' ? u.name = user.name : '';
+          user.patronymic !== '' ? u.patronymic = user.patronymic : '';
+          user.email !== '' ? u.email = user.email : '';
+          console.log("из мэп" +u.id)
         }
       })
-
-
-      //this.dialogUpdateVisible = false;
+      this.dialogUpdateVisible = false;
+      console.log('из MyApp dialogUpdateVisible: '+ this.dialogUpdateVisible)
     },
 
     showDialog() {
-      this.dialogVisible = true;
-
+      this.dialogVisible = !this.dialogVisible;
     },
-    dialogHide() {
-      this.dialogVisible = false;
+
+    showUpdateDialog(user) {
+      console.log('из MyApp')
+      console.log(user)
+      this.dialogUpdateVisible = !this.dialogUpdateVisible;
     }
 
   }

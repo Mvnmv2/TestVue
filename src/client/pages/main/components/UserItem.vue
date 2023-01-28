@@ -14,17 +14,21 @@
         </div>
       </div>
       <div class="user__btn">
-        <my-button @click="$emit('remove', user)">Удалить</my-button>
+        <my-button @click="">Удалить</my-button>
 
-        <my-button @click="showDialogUpdate">Редактировать</my-button>
+        <my-button
+            @click="showDialogUpdate"
+        >Редактировать
+        </my-button>
 
-        <my-dialog :show="dialogUpdateVisible"
-                   @update="dialogUpdateHide"
+        <my-dialog-update
+            :show="dialogVisible"
+            @updateDialog="$emit('updateDialog', false )"
         >
           <user-update-form
               :id="id"
               @updateUser="$emit('updateUser', $event)"/>
-        </my-dialog>
+        </my-dialog-update>
       </div>
     </div>
 
@@ -34,9 +38,15 @@
 <script>
 import UserUpdateForm from "./UserUpdateForm.vue";
 import MyButton from "./UI/MyButton.vue";
+import MyDialogUpdate from "./MyDialogUpdateUser.vue";
 
 export default {
-  components: {MyButton, UserUpdateForm},
+  components: {MyDialogUpdate, MyButton, UserUpdateForm},
+  data() {
+    return {
+      dialogVisible: this.dialogUpdateVisible
+    }
+  },
   props: {
     user: {
       type: Object,
@@ -46,24 +56,18 @@ export default {
       type: Boolean,
       default: false
     },
+
     id: {
       type: Number,
       required: true
     }
   },
-
-  data() {
-    return {}
-  },
-
   methods: {
-    dialogUpdateHide() {
-      this.dialogUpdateVisible = false;
-    },
     showDialogUpdate() {
-      this.dialogUpdateVisible = true;
-
+      this.dialogVisible = !this.dialogVisible
+      console.log('из UserItem, dialogVisible : ' + this.dialogVisible)
     },
+
   }
 
 }

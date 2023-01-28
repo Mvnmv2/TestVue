@@ -9,6 +9,8 @@
           @remove="$emit('remove', user)"
           @updateUser="$emit('updateUser', $event)"
 
+          @updateDialog="$emit('updateDialog')"
+
           :dialogUpdateVisible="dialogUpdateVisible"
           :id="user.id"
 
@@ -34,10 +36,6 @@ export default {
       type: Boolean,
       default: false
     },
-    // id: {
-    //   type: Number,
-    //   required: true
-    // }
   },
 
 }
