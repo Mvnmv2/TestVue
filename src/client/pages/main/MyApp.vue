@@ -14,7 +14,7 @@
         :dialogUpdateVisible="dialogUpdateVisible"
         @remove="removeUser"
         @updateUser="updateUser"
-        @updateDialog="showUpdateDialog"
+        @hideDialogEvent="showUpdateDialog"
     />
   </div>
 </template>

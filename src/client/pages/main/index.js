@@ -22,3 +22,4 @@ new Vue({
     router  : new VueRouter(),
     render  : (h) => h(Main)
 }).$mount('#app');
+

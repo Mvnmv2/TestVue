@@ -17,14 +17,16 @@
         <my-button @click="">Удалить</my-button>
 
         <my-button
-            @click="showDialogUpdate"
+            @click="toggleUpdateDialogVisibility"
         >Редактировать
         </my-button>
 
         <my-dialog-update
             :show="dialogVisible"
-            @updateDialog="$emit('updateDialog', false )"
+
+            @hideDialogEvent="toggleUpdateDialogVisibility"
         >
+          <!--            @hideDialogEvent="$emit('hideDialogEvent', false )"-->
           <user-update-form
               :id="id"
               @updateUser="$emit('updateUser', $event)"/>
@@ -63,7 +65,7 @@ export default {
     }
   },
   methods: {
-    showDialogUpdate() {
+    toggleUpdateDialogVisibility() {
       this.dialogVisible = !this.dialogVisible
       console.log('из UserItem, dialogVisible : ' + this.dialogVisible)
     },

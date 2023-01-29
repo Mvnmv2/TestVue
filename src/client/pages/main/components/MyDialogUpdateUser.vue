@@ -21,8 +21,8 @@ export default {
   },
   methods: {
     hideDialog(){
-      console.log('updateDialog')
-      this.$emit('updateDialog', false )
+      console.log('hideDialogEvent')
+      this.$emit('hideDialogEvent', false )
     }
   }
 }

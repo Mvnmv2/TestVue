@@ -9,7 +9,7 @@
           @remove="$emit('remove', user)"
           @updateUser="$emit('updateUser', $event)"
 
-          @updateDialog="$emit('updateDialog')"
+          @hideDialogEvent="$emit('hideDialogEvent')"
 
           :dialogUpdateVisible="dialogUpdateVisible"
           :id="user.id"
